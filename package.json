@@ -1,0 +1,38 @@
+{
+  "name": "airbnb-photogallery",
+  "version": "1.0.0",
+  "description": "This repo create the photo gallery module of airbnb.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "npx webpack --config webpack.config.js --watch",
+    "server:dev": "nodemon ./server/index.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/singhgur8/airbnb-photogallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/singhgur8/airbnb-photogallery/issues"
+  },
+  "homepage": "https://github.com/singhgur8/airbnb-photogallery#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "axios": "^0.19.0",
+    "babel-loader": "^8.0.6",
+    "eslint-config-airbnb": "^18.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12",
+    "nodemon": "^2.0.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "underscore": "^1.9.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
