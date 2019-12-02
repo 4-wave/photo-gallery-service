@@ -1,0 +1,8 @@
+# package json files not needed
+node_modules
+
+#keys
+config.js
+
+#extra files not needed
+public/bundle.js
