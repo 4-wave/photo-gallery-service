@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "npx webpack --config webpack.config.js --watch",
-    "server:dev": "nodemon ./server/index.js --watch"
+    "server:dev": "nodemon ./server/index.js --watch",
+    "db:dev": "node db/seed.js"
   },
   "repository": {
     "type": "git",
