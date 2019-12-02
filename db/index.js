@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
+
 const mongoUri = 'mongodb://localhost/airbnb';
 
-mongoose.connect(mongoUri, {useNewUrlParser: true});
+const database = mongoose.connect(mongoUri, { useNewUrlParser: true });
 
-database = mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
-const urlSchema = new mongoose.Schema({url: String}) //generic subdoc, becasue we do not know how many subdocs there will be
+// generic subdoc, becasue we do not know how many subdocs there will be
+const urlSchema = new mongoose.Schema({ url: String });
 
 const listingSchema = new mongoose.Schema({
-  name: String, 
+  name: String,
   urls: [urlSchema],
-  url: urlSchema
-}
-);
+  url: urlSchema,
+});
 
 const Listing = mongoose.model('Listing', listingSchema);
 
