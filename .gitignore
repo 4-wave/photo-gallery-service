@@ -6,3 +6,7 @@ config.js
 
 #extra files not needed
 public/bundle.js
+
+package-lock.json
+
+coverage
