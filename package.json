@@ -4,7 +4,7 @@
   "description": "This repo create the photo gallery module of airbnb.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --coverage",
     "build:dev": "npx webpack --config webpack.config.js --watch",
     "server:dev": "nodemon ./server/index.js --watch",
     "db:dev": "node db/seed.js"

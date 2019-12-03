@@ -8,3 +8,5 @@ config.js
 public/bundle.js
 
 package-lock.json
+
+coverage
