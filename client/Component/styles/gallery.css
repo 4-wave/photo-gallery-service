@@ -3,10 +3,8 @@
     height: 400.000px;
     background-color: gray;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto;
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
     object-fit: contain;
 }
 
@@ -40,6 +38,30 @@
     grid-column: 4;
 }
 
-div:hover {
-    filter: brightness(50%);
+.disappear {
+    display: none;
+}
+
+@media only screen and (max-width: 1127px) {
+  .img4 {
+    display: none;
+  }
+  .img5 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 743px) {
+  .img2 {
+    display: none;
+  }
+  .img3 {
+    display: none;
+  }
+  .img4 {
+    display: none;
+  }
+  .img5 {
+    display: none;
+  }
 }
