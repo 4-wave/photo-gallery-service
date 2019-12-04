@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Gallery from './Component/gallery.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -7,18 +8,21 @@ class App extends React.Component {
     this.state = {
 
     };
+    // console.log(Gallery, 'HEREEE')
   }
 
   componentDidMount() {
-    axios.get('/airbnb/listings')
-      .then((data) => {
-        console.log(data.data);
-      });
+    // axios.get('/airbnb/listings')
+    //   .then((data) => {
+    //     console.log(data.data);
+    //   });
   }
 
   render() {
     return (
-      <div>PLACEHOLDER</div>
+      <div>
+        <Gallery/>
+      </div>
     );
   }
 }

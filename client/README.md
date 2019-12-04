@@ -23,4 +23,8 @@ Tasks
     -later worry about them being able to click   
 
 #Create tests that satisfy the outline
+
 #Create the relative React components
+    -Create the photo Gallery
+    -Create the Share and Save button
+    -Create the View Photos button
