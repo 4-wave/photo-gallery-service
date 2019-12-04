@@ -6,22 +6,38 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      photos: []
+      photos: {name:'placeholder', urls:[{url: "https://airbnbphotogallery.s3-us-west-1.amazonaws.com/bedroom5.jpg"},
+                                         {url: "https://airbnbphotogallery.s3-us-west-1.amazonaws.com/livingroom5.jpg"},
+                                         {url: "https://airbnbphotogallery.s3-us-west-1.amazonaws.com/bathroom5.jpg"},
+                                         {url: "https://airbnbphotogallery.s3-us-west-1.amazonaws.com/feature5.jpg"},
+                                         {url: "https://airbnbphotogallery.s3-us-west-1.amazonaws.com/outside5.jpg"},
+                                        ]},
     };
-    // console.log(Gallery, 'HEREEE')
+  //the photo will hold the photo of the listing
+  //how will I grab the right 
   }
 
   componentDidMount() {
-    // axios.get('/airbnb/listings')
-    //   .then((data) => {
-    //     console.log(data.data);
-    //   });
+    if (window.location.pathname === '/') {
+      var endpoint = 1;
+    } else {
+      var endpoint = window.location.pathname.split('/')[1]
+    }
+    axios.get(`/airbnb/listings/${endpoint}`)
+      .then((data) => {
+        this.setState({
+          photos: data.data
+        }, () => {
+          console.log('CURRENT STATE',this.state)
+          //for some reason when the state changes, gallery does not re-render with the new states (images)
+        })
+      });
   }
 
   render() {
     return (
       <div>
-        <Gallery/>
+        <Gallery info = {this.state.photos}/>
       </div>
     );
   }
