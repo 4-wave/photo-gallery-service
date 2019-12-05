@@ -2,7 +2,11 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  setupFiles: ['<rootDir>/client/tests/setupTests.js'],
+  moduleNameMapper: {
+    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+  },
+
+  setupFiles: ['<rootDir>/setupTests.js'],
 
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
@@ -19,7 +23,4 @@ module.exports = {
   testEnvironmentOptions: {
     enzymeAdapter: 'react16',
   },
-
-  // Whether to use watchman for file crawling
-  // watchman: true,
 };
