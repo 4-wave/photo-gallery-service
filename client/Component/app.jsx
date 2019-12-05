@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Gallery from './Component/gallery.jsx'
+import Gallery from './gallery.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -20,15 +20,10 @@ class App extends React.Component {
     } else {
       endpoint = window.location.pathname.split('/')[1];
     }
-    axios.get(`/airbnb/listings/${endpoint}`)
-      .then((data) => {
-        this.setState({
-          photos: data.data,
-        }, () => {
-          console.log('CURRENT STATE', this.state);
-        });
-      });
+    fetchData(endpoint);
   }
+
+  
 
   render() {
     return (
@@ -37,6 +32,17 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+export function fetchData(endpoint) {
+  axios.get(`/airbnb/listings/${endpoint}`)
+    .then((data) => {
+      this.setState({
+        photos: data.data,
+      }, () => {
+        console.log('CURRENT STATE', this.state);
+      });
+    });
 }
 
 

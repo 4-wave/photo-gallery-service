@@ -39,7 +39,7 @@ function seedData(NumberOfSeeds) {
     const houseName = `${location} ${description} ${type}`;
 
     // choose a random number of photos this listing will have ranging from 5 - 10
-    const numberOfPhotos = Math.floor((Math.random() * 5) + 6);
+    const numberOfPhotos = Math.floor((Math.random() * 10) + 1);
     const urlArr = [];
 
     for (let j = 1; j < numberOfPhotos + 1; j += 1) {
@@ -61,7 +61,7 @@ function seedData(NumberOfSeeds) {
 
 // Clean collection Before Seeding
 db.Listing.remove({}, () => {
-//   console.log('collection was cleared!');
+  console.log('collection was cleared!');
 });
 
 seedData(100);

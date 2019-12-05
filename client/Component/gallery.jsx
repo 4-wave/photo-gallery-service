@@ -11,7 +11,19 @@ class Gallery extends React.Component {
 
   render() {
     // want to only add the first five in the gallery photo
-    const galleryPhotoArr = this.props.info.urls.slice(0, 5);
+    let galleryPhotoArr = this.props.info.urls.slice(0, 5);
+
+
+    // currently DB only has a minimum of 5 photos
+    // if length is less than 5 then only render 3 imgs
+    if (galleryPhotoArr.length < 5 && galleryPhotoArr.length > 2) {
+      galleryPhotoArr = galleryPhotoArr.slice(0, 3);
+    }
+
+    // if less than 3, then only render 1 image
+    if (galleryPhotoArr.length < 3 && galleryPhotoArr.length > 0) {
+      galleryPhotoArr = galleryPhotoArr.slice(0, 1);
+    }
 
     return (
       <div className={styles.container}>
