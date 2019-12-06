@@ -39,7 +39,7 @@ class App extends React.Component {
 
   changePage(e) {
     let photoNumber; // lets me use the same click function on different DOM element types
-    if (e.target.nodeName !== 'svg') {
+    if (e.target.nodeName === 'DIV') {
       photoNumber = e.target.className.split(' ')[0]
     } else {
       photoNumber = 0;
@@ -65,7 +65,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <CarouselPage onClick={this.changePage} />
+        <CarouselPage onClick={this.changePage} info={photos} />
       </div>
     );
   };
