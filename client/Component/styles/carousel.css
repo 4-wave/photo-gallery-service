@@ -1,21 +1,49 @@
-.test {
+.mainGalleryContainer {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 400px;
+}
+
+.mainGallery {
+  grid-column: 2;
+  grid-row: 1;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat:no-repeat;
+
+  /* figure out how to align the photo in the center */
+  align-content: center;
+  margin: auto;
+}
+
+.leftArrow {
+    grid-column: 1;
+}
+
+.rightArrow {
+    grid-column: 3;
+}
+
+.fill {
   height: 100%;
   width: 100%;
   background-size: cover;
 }
 
 .container {
-  height: 300px;
+  height: 150px;
   width: 100%;
 }
 
 .fadeOut{
      opacity:0;
      transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
-
 }
 .fadeIn{
      opacity:1;
-     transition: opacity 0.5s;
-
+     transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
 }

@@ -9,11 +9,12 @@ class CarouselPage extends React.Component {
     super(props);
     this.state = {
     };
+    // console.log(props.showPhoto)
   }
 
   render() {
-    const { info, onClick } = this.props;
-    console.log('DID OPAGE get it??', info)
+    const { info, onClick, showPhoto } = this.props;
+    let photoId = showPhoto.photo;
     return (
       <div>
 
@@ -23,12 +24,12 @@ class CarouselPage extends React.Component {
         </div>
 
         <div className={styles.container}>
-          <MainCarousel photos={info} />
+          <MainCarousel photos={info} id={photoId} />
         </div>
 
-        <div>
+        {/* <div>
           <PreviewCarousel />
-        </div>
+        </div> */}
 
       </div>
     );

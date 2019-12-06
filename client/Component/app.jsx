@@ -32,7 +32,7 @@ class App extends React.Component {
         this.setState({
           photos: data.data,
         }, () => {
-          console.log('CURRENT STATE', this.state);
+          console.log('CURRENT STATE after axios req', this.state);
         });
       });
   }
@@ -65,7 +65,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <CarouselPage onClick={this.changePage} info={photos} />
+        <CarouselPage onClick={this.changePage} info={photos} showPhoto={show} />
       </div>
     );
   };
