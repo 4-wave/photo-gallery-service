@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Gallery from './gallery.jsx'
+import Gallery from './gallery.jsx';
+import CarouselPage from './carouselPage.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -37,12 +38,18 @@ class App extends React.Component {
   }
 
   changePage(e) {
-    console.log('I AM CLICKEDD', e.target.className.split(' ')[0])
+    let photoNumber; // lets me use the same click function on different DOM element types
+    if (e.target.nodeName !== 'svg') {
+      photoNumber = e.target.className.split(' ')[0]
+    } else {
+      photoNumber = 0;
+    }
 
+    const { show } = this.state;
     this.setState({
       show: {
-        gallery: false,
-        photo: e.target.className.split(' ')[0],
+        gallery: !show.gallery,
+        photo: photoNumber,
       },
     });
   }
@@ -55,14 +62,13 @@ class App extends React.Component {
           <Gallery info={photos} popup={this.changePage} onClick={this.changePage} />
         </div>
       );
-    } else if (!show.gallery) {
-      return (
-        <div>
-          {show.photo}
-        </div>
-      )
-    };
-  }
+    }
+    return (
+      <div>
+        <CarouselPage onClick={this.changePage} />
+      </div>
+    );
+  };
 }
 
 export default App;
