@@ -20,7 +20,7 @@
   height: 100%;
   width: 100%;
   background-size: cover;
-  /* transition: transform 1s; */
+  transition: transform 1s;
   filter: brightness(75%); 
   cursor: pointer;
 

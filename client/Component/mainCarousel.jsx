@@ -7,6 +7,7 @@ class MainCarousel extends React.Component {
     this.state = {
       counter: 0,
       currentPhoto: props.photos.urls[0].url,
+      visible: true,
     };
 
     this.toggleAppear = this.toggleAppear.bind(this);
@@ -24,13 +25,18 @@ class MainCarousel extends React.Component {
   };
 
   nextProperty() {
+    // right now it stops but i need to make it circulate
     if (this.state.counter < this.props.photos.urls.length-1) {
       this.setState({
+        visible: false,
         counter: this.state.counter + 1,
       }, () => {
-        this.setState({
-          currentPhoto: this.props.photos.urls[this.state.counter].url,
-        });
+        setTimeout(() => {
+          this.setState({
+            currentPhoto: this.props.photos.urls[this.state.counter].url,
+            visible: true,
+          });
+        }, 100);
       });
     }
   }
@@ -38,11 +44,15 @@ class MainCarousel extends React.Component {
   previousProperty() {
     if (this.state.counter > 0) {
       this.setState({
+        visible: false,
         counter: this.state.counter - 1,
       }, () => {
-        this.setState({
-          currentPhoto: this.props.photos.urls[this.state.counter].url,
-        });
+        setTimeout(() => {
+          this.setState({
+            currentPhoto: this.props.photos.urls[this.state.counter].url,
+            visible: true,
+          });
+        }, 100);
       });
     }
   }
@@ -51,6 +61,10 @@ class MainCarousel extends React.Component {
     const Next = '>';
     const Prev = '<';
     const { currentPhoto } = this.state;
+    const style = {
+      'background-image': `url(${currentPhoto})`,
+    };
+    const fade = this.state.visible ? styles.fadeIn : styles.fadeOut;
 
     return (
       <div className={styles.test}>
@@ -66,8 +80,8 @@ class MainCarousel extends React.Component {
         </button>
 
         <div
-          className={styles.test}
-          style={{ 'background-image': `url(${currentPhoto})` }}
+          className={`${styles.test} ${fade}`}
+          style={style}
         />
 
       </div>
