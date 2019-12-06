@@ -10,7 +10,13 @@ class App extends React.Component {
         name: 'placeholder',
         urls: [],
       },
+      show: {
+        gallery: true,
+        photo: 0,
+      },
     };
+
+    this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
@@ -30,15 +36,33 @@ class App extends React.Component {
       });
   }
 
+  changePage(e) {
+    console.log('I AM CLICKEDD', e.target.className.split(' ')[0])
+
+    this.setState({
+      show: {
+        gallery: false,
+        photo: e.target.className.split(' ')[0],
+      },
+    });
+  }
+
   render() {
-    return (
-      <div>
-        <Gallery info={this.state.photos} />
-      </div>
-    );
+    const { show, photos } = this.state;
+    if (show.gallery) {
+      return (
+        <div>
+          <Gallery info={photos} popup={this.changePage} onClick={this.changePage} />
+        </div>
+      );
+    } else if (!show.gallery) {
+      return (
+        <div>
+          {show.photo}
+        </div>
+      )
+    };
   }
 }
-
-
 
 export default App;

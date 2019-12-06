@@ -28,3 +28,5 @@ Tasks
     -Create the photo Gallery
     -Create the Share and Save button
     -Create the View Photos button
+    -Looks like some of the photos actually have a description or 'verified by airbnb lines'
+    -OR others just use the title of the property and put that instead

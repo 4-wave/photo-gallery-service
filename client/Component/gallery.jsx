@@ -16,11 +16,6 @@ class Gallery extends React.Component {
   // I should probably break up the css file into two??
 
   darkenOtherPohots(e) {
-    // Now change the state of every class but this one.
-    // create an array of the numbers that are not this one
-    // and put the values of that array into the state
-    // iterate from 1 to 5, if it matches to make, otheriwse make
-    // should always be an array of 5, and one pass
     const targ = e.target.className.split(' ')[0];
 
     const arr = [];
@@ -30,7 +25,6 @@ class Gallery extends React.Component {
         arr.push(stateKey);
       }
     }
-    // console.log(arr)
 
     this.setState({
       [arr[0]]: styles.divInnerDarken,
@@ -72,7 +66,7 @@ class Gallery extends React.Component {
     }
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container} onClick={this.props.onClick}>
         {galleryPhotoArr.map((item, id) => {
           // console.log('can i get the right state?', this.state[`img${id+1}Css`]);
 
