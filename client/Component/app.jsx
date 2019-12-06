@@ -20,10 +20,15 @@ class App extends React.Component {
     } else {
       endpoint = window.location.pathname.split('/')[1];
     }
-    fetchData(endpoint);
+    axios.get(`/airbnb/listings/${endpoint}`)
+      .then((data) => {
+        this.setState({
+          photos: data.data,
+        }, () => {
+          console.log('CURRENT STATE', this.state);
+        });
+      });
   }
-
-  
 
   render() {
     return (
@@ -34,16 +39,6 @@ class App extends React.Component {
   }
 }
 
-export function fetchData(endpoint) {
-  axios.get(`/airbnb/listings/${endpoint}`)
-    .then((data) => {
-      this.setState({
-        photos: data.data,
-      }, () => {
-        console.log('CURRENT STATE', this.state);
-      });
-    });
-}
 
 
 export default App;
