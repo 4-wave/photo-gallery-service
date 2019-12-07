@@ -1,6 +1,8 @@
 import React from 'react';
 import { Promise } from 'bluebird';
 import styles from './styles/carousel.css';
+import NextButton from './helper/rightArrowSVG.jsx';
+import PrevButton from './helper/leftArrowSVG.jsx';
 
 
 class MainCarousel extends React.Component {
@@ -47,21 +49,20 @@ class MainCarousel extends React.Component {
             });
           }, 100);
         });
-    } 
-    // else {
-    //   this.setState({
-    //     visible: false,
-    //     counter: 0,
-    //   })
-    //     .then(() => {
-    //       setTimeout(() => {
-    //         this.setState({
-    //           currentPhoto: photos.urls[counter].url,
-    //           visible: true,
-    //         });
-    //       }, 100);
-    //     });
-    // }
+    } else {
+      this.setState({
+        visible: false,
+        counter: 0,
+      })
+        .then(() => {
+          setTimeout(() => {
+            this.setState({
+              currentPhoto: photos.urls[counter].url,
+              visible: true,
+            });
+          }, 100);
+        });
+    }
   }
 
   previousProperty() {
@@ -84,21 +85,20 @@ class MainCarousel extends React.Component {
             });
           }, 100);
         });
-    } 
-    // else {
-    //   this.setState({
-    //     visible: false,
-    //     counter: photos.urls.length-1,
-    //   })
-    //     .then(() => {
-    //       setTimeout(() => {
-    //         this.setState({
-    //           currentPhoto: photos.urls[counter].url,
-    //           visible: true,
-    //         });
-    //       }, 100);
-    //     });
-    // }
+    } else {
+      this.setState({
+        visible: false,
+        counter: photos.urls.length-1,
+      })
+        .then(() => {
+          setTimeout(() => {
+            this.setState({
+              currentPhoto: photos.urls[counter].url,
+              visible: true,
+            });
+          }, 100);
+        });
+    }
   }
 
   render() {
@@ -114,11 +114,11 @@ class MainCarousel extends React.Component {
       <div className={styles.mainGalleryContainer}>
 
         <button onClick={this.previousProperty} type="button" className={styles.leftArrow}>
-          {Prev}
+          <PrevButton width={24} />
         </button>
 
         <button onClick={this.nextProperty} type="button" className={styles.rightArrow}>
-          {Next}
+          <NextButton width={24} />
         </button>
 
         <div

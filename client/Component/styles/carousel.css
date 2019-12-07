@@ -22,10 +22,15 @@
 
 .leftArrow {
     grid-column: 1;
+    border-color: white;
+    outline: none;
+
 }
 
 .rightArrow {
     grid-column: 3;
+    border-color: white;
+    outline: none;
 }
 
 .fill {
