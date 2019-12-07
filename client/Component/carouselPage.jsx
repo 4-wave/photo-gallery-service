@@ -20,7 +20,7 @@ class CarouselPage extends React.Component {
 
         <div className={styles.closePage}>
             {/* Give this some padding and margin, using styling later */}
-          <Icon width={40} onClick={onClick} />
+          <Icon width={25} onClick={onClick} className={styles.x} />
         </div>
 
         <div className={styles.pageMainPositioning}>

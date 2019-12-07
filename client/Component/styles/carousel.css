@@ -1,10 +1,11 @@
+/* main carousel */
 .mainGalleryContainer {
   height: 100%;
   width: 100%;
   background-size: cover;
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
-  grid-template-rows: 400px;
+  grid-template-rows: 550px;
 }
 
 .mainGallery {
@@ -55,6 +56,9 @@
     cursor: pointer;
 }
 
+.x {
+  cursor: pointer;
+}
 
 .fadeOut{
      opacity:0;
@@ -66,18 +70,26 @@
 }
 
 /* width 850px for container, 12px for each arrow + remainder, 826 for the photo */
+/* Here on is the positioning of the components...I should break it down for
+for component and then a positing css file */
 
+/* biggest container */
 .galleryPageContainer {
   display: grid;
-  grid-auto-columns: 70% 30%;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 30% 60%;
+  /* specifiy how big eaach row should be? */
 }
 
+/* component containers */
 .pageMainPositioning {
   grid-column: 1;
-  grid-row: 1/ span 2;
+  grid-row: 1/ span 3;
   height: 100%;
   width: 100%;
   background-size: cover;
+  margin-top: 80px;
+  margin-left: 20px;
 }
 
 .previewGalleryContainer {
@@ -86,11 +98,18 @@
   height: 100%;
   width: 100%;
   background-size: cover;
+  padding-top: 45px;
   /* display: grid;
   grid-auto-rows: 30% 30% 40%; */
 }
 
 .closePage {
- grid-row: 1;
- grid-column: 2;
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 45px;
+  /* margin: 30px; */
 }
+
+
