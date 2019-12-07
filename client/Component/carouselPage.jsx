@@ -10,6 +10,15 @@ class CarouselPage extends React.Component {
     this.state = {
     };
     // console.log(props.showPhoto)
+    this.onClickHandle = this.onClickHandle.bind(this);
+  }
+
+  // this needs an onclick function, If any of the carosouls click this button then it sends them
+  // new props that reRenders the state
+  // this should also send all of the photos to 
+
+  onClickHandle(e) {
+      console.log('I was clicked and am in the parent', e.target)
   }
 
   render() {
@@ -28,7 +37,7 @@ class CarouselPage extends React.Component {
         </div>
 
         <div className={styles.previewGalleryContainer}>
-          <PreviewCarousel />
+          <PreviewCarousel photos={info} photoClick={this.onClickHandle} />
         </div>
 
       </div>

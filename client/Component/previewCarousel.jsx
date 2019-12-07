@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles/previewCarousel.css';
+import PreviewCarouselItem from './previewCarouselItem.jsx';
 
 class PreviewCarousel extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class PreviewCarousel extends React.Component {
 
 
   render() {
+    const { photos, photoClick } = this.props;
     const background = {
       'background-image': `url(https://airbnbphotogallery.s3-us-west-1.amazonaws.com/bedroom14.jpg)`,
     };
@@ -17,16 +19,15 @@ class PreviewCarousel extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.carouselPosition}>
-            {/* Photos go Here. Map over the photos Here */}
-            <div>
-              <button type="submit" className={styles.button} style={background} />
-            </div>
-            <div>
-              <button type="submit" className={styles.buttonSelected} style={background} />
-            </div>
-            <div>
-              <button type="submit" className={styles.button} style={background} />
-            </div>
+
+          {photos.urls.map((url) => {
+            return (
+              <PreviewCarouselItem
+                photo={url}
+                onClick={photoClick}
+              />
+            );
+          })}
         </div>
 
         <div className={styles.photoNumber}>
