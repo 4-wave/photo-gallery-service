@@ -16,20 +16,20 @@ class CarouselPage extends React.Component {
     const { info, onClick, showPhoto } = this.props;
     let photoId = showPhoto.photo;
     return (
-      <div>
+      <div className={styles.galleryPageContainer}>
 
-        <div>
+        <div className={styles.closePage}>
             {/* Give this some padding and margin, using styling later */}
           <Icon width={40} onClick={onClick} />
         </div>
 
-        <div className={styles.container}>
+        <div className={styles.pageMainPositioning}>
           <MainCarousel photos={info} id={photoId} />
         </div>
 
-        {/* <div>
+        <div className={styles.previewGalleryContainer}>
           <PreviewCarousel />
-        </div> */}
+        </div>
 
       </div>
     );

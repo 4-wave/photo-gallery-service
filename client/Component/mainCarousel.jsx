@@ -122,9 +122,14 @@ class MainCarousel extends React.Component {
         </button>
 
         <div
-          className={`${styles.mainGallery} ${fade}`}
-          style={style}
-        />
+        // what if i make this a flex
+        // alig the img inside in the center, and give that div the rounded shape
+        // and a set width and height..? or top limit but not bottom
+
+          className={`${styles.mainGallery}`}
+        >
+          <div className={`${styles.mainPhoto} ${fade}`} style={style} />
+        </div>
 
       </div>
     );
