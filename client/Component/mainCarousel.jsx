@@ -4,91 +4,36 @@ import styles from './styles/carousel.css';
 import NextButton from './helper/rightArrowSVG.jsx';
 import PrevButton from './helper/leftArrowSVG.jsx';
 
-
 class MainCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhotoIndex: 0,
-      visible: true,
     };
-    this.photos = props.photos.urls
 
+    // console.log('MAIN CAROUSEL WAS CALLED, new index?', index);
 
-    this.nextProperty = this.nextProperty.bind(this);
-    this.previousProperty = this.previousProperty.bind(this);
+    // expecting this to be called if the state in carouselpage changees
+    // maybe it is not updateing because the state can't be updated like
+    // this, so i would need component did update
+
     this.setState = Promise.promisify(this.setState);
   }
 
-  componentDidMount() {
-    this.setState({
-      currentPhotoIndex: Number(this.props.id),
-    });
-  }
-
-  nextProperty() {
-    const { currentPhotoIndex } = this.state;
-
-    if (currentPhotoIndex < this.photos.length - 1) {
-      this.setState(() => ({
-        visible: false,
-      }))
-        .then(() => {
-          setTimeout(() => {
-            this.setState({
-              currentPhotoIndex: currentPhotoIndex + 1,
-              visible: true,
-            });
-          }, 100);
-        });
-    } else {
-      this.setState({
-        visible: false,
-      })
-        .then(() => {
-          setTimeout(() => {
-            this.setState({
-              currentPhotoIndex: 0,
-              visible: true,
-            });
-          }, 100);
-        });
-    }
-  }
-
-  previousProperty() {
-    const { currentPhotoIndex } = this.state;
-
-    if (currentPhotoIndex > 0) {
-      this.setState({
-        visible: false,
-      })
-        .then(() => {
-          setTimeout(() => {
-            this.setState({
-              currentPhotoIndex: currentPhotoIndex - 1,
-              visible: true,
-            });
-          }, 100);
-        });
-    } else {
-      this.setState({
-        visible: false,
-      })
-        .then(() => {
-          setTimeout(() => {
-            this.setState({
-              currentPhotoIndex: this.photos.length - 1,
-              visible: true,
-            });
-          }, 100);
-        });
-    }
-  }
 
   render() {
-    const { currentPhotoIndex, visible } = this.state;
-    const url = this.photos[currentPhotoIndex].url
+      const { index, visible, previousListing, nextListing, photos } = this.props;
+
+      console.log('index', index)
+      console.log('visible', visible)
+      console.log('prevfunc', previousListing)
+      console.log('nextlisting', nextListing)
+
+
+      console.log('photos', photos);
+
+    const url = photos.urls[index].url
+
+
     const style = {
       'background-image': `url(${url})`,
     };
@@ -97,17 +42,15 @@ class MainCarousel extends React.Component {
     return (
       <div className={styles.mainGalleryContainer}>
 
-        <button onClick={this.previousProperty} type="button" className={styles.leftArrow}>
+        <button onClick={previousListing} type="button" className={styles.leftArrow}>
           <PrevButton width={24} />
         </button>
 
-        <button onClick={this.nextProperty} type="button" className={styles.rightArrow}>
+        <button onClick={nextListing} type="button" className={styles.rightArrow}>
           <NextButton width={24} />
         </button>
 
-        <div
-          className={`${styles.mainGallery}`}
-        >
+        <div className={`${styles.mainGallery}`}>
           <div className={`${styles.mainPhoto} ${fade}`} style={style} />
         </div>
 

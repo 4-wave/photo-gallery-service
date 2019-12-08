@@ -40,7 +40,7 @@ class App extends React.Component {
   changePage(e) {
     let photoNumber; // lets me use the same click function on different DOM element types
     if (e.target.nodeName === 'DIV') {
-      photoNumber = e.target.className.split(' ')[0]
+      photoNumber = Number(e.target.className.split(' ')[0]);
     } else {
       photoNumber = 0;
     }
@@ -59,7 +59,7 @@ class App extends React.Component {
     if (show.gallery) {
       return (
         <div>
-          <Gallery info={photos} popup={this.changePage} onClick={this.changePage} />
+          <Gallery info={photos} onClick={this.changePage} />
         </div>
       );
     }
@@ -68,7 +68,7 @@ class App extends React.Component {
         <CarouselPage onClick={this.changePage} info={photos} showPhoto={show} />
       </div>
     );
-  };
+  }
 }
 
 export default App;

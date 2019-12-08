@@ -7,24 +7,25 @@ class PreviewCarousel extends React.Component {
     super(props);
     this.state = {
     };
+    // console.log('THE PARENT OF CAROSUEL RAN PREVIEW');
   }
 
 
   render() {
-    const { photos, photoClick } = this.props;
-    const background = {
-      'background-image': `url(https://airbnbphotogallery.s3-us-west-1.amazonaws.com/bedroom14.jpg)`,
-    };
+    // console.log('middle child ran for preview');
+    const { photos, photoClick, selectedIndex } = this.props;
 
     return (
       <div className={styles.container}>
         <div className={styles.carouselPosition}>
 
-          {photos.urls.map((url) => {
+          {photos.urls.map((url, id) => {
             return (
               <PreviewCarouselItem
                 photo={url}
                 onClick={photoClick}
+                id={id}
+                selectedIndex={selectedIndex}
               />
             );
           })}
