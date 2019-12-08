@@ -15,6 +15,9 @@ class PreviewCarouselItem extends React.Component {
       'background-image': `url(${photo.url})`,
     };
     const selected = (selectedIndex === id) ? styles.buttonSelected : styles.button;
+    // since this knows the id, and is also giving the right id, i just need to scroll the 
+    // page by the right diviations
+
     return (
       <div>
         <button

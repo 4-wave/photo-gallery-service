@@ -12,10 +12,16 @@ class PreviewCarousel extends React.Component {
 
   render() {
     const { photos, photoClick, selectedIndex } = this.props;
+    const deltaX = selectedIndex * (100 / photos.urls.length) * -1;
+    console.log(deltaX); // FORMULA NOT RIGHT
+    const slide = {
+      'transition': 'transform 1s',
+      'transform': `translateX(${deltaX}%)`,
+    };
 
     return (
       <div className={styles.container}>
-        <div className={styles.carouselPosition}>
+        <div className={styles.carouselPosition} style={slide} id='SAM'>
 
           {photos.urls.map((url, id) => {
             return (
