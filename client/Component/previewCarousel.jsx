@@ -41,7 +41,7 @@ class PreviewCarousel extends React.Component {
         </div>
 
         <div className={styles.photoNumber}>
-          <b>{ `${selectedIndex + 1} /  ${photos.urls.length + 1}`}</b>
+          <b>{ `${selectedIndex + 1} /  ${photos.urls.length}`}</b>
         </div>
 
         <div className={styles.photoDescription}>
