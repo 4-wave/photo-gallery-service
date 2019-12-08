@@ -14,7 +14,6 @@ class CarouselPage extends React.Component {
       carouselPhotoIndex: showPhoto.photo - 1,
       visible: true,
     };
-    console.log(this.state, 'CARO PAGE', showPhoto);
 
     this.photos = props.info.urls;
     this.onClickHandle = this.onClickHandle.bind(this);
@@ -24,11 +23,19 @@ class CarouselPage extends React.Component {
   }
 
   onClickHandle(e) {
-      console.log('I FAILED HERE')
     const clickedPhotoIndex = Number(e.target.className.split(' ')[0]);
-    this.setState({
-      carouselPhotoIndex: clickedPhotoIndex,
-    });
+
+    this.setState(() => ({
+      visible: false,
+    }))
+      .then(() => {
+        setTimeout(() => {
+          this.setState({
+            carouselPhotoIndex: clickedPhotoIndex,
+            visible: true,
+          });
+        }, 100);
+      });
   }
 
   nextListing() {
@@ -94,7 +101,6 @@ class CarouselPage extends React.Component {
   render() {
     const { info, onClick } = this.props;
     const { carouselPhotoIndex, visible } = this.state;
-    // console.log('DID RENDER RERENDER?', carouselPhotoIndex, info, this.nextListing, this.previousListing);
 
     return (
       <div className={styles.galleryPageContainer}>
@@ -107,7 +113,7 @@ class CarouselPage extends React.Component {
             className={styles.x}
           />
         </div>
-        {/* issue inside main carousel, no longer need to send all of the info, just the right photo */}
+
         <div className={styles.pageMainPositioning}>
           <MainCarousel
             photos={info}

@@ -31,8 +31,6 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           photos: data.data,
-        }, () => {
-          console.log('CURRENT STATE after axios req', this.state);
         });
       });
   }

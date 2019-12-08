@@ -7,12 +7,10 @@ class PreviewCarousel extends React.Component {
     super(props);
     this.state = {
     };
-    // console.log('THE PARENT OF CAROSUEL RAN PREVIEW');
   }
 
 
   render() {
-    // console.log('middle child ran for preview');
     const { photos, photoClick, selectedIndex } = this.props;
 
     return (

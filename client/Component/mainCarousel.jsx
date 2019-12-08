@@ -9,31 +9,12 @@ class MainCarousel extends React.Component {
     super(props);
     this.state = {
     };
-
-    // console.log('MAIN CAROUSEL WAS CALLED, new index?', index);
-
-    // expecting this to be called if the state in carouselpage changees
-    // maybe it is not updateing because the state can't be updated like
-    // this, so i would need component did update
-
-    this.setState = Promise.promisify(this.setState);
   }
 
 
   render() {
-      const { index, visible, previousListing, nextListing, photos } = this.props;
-
-      console.log('index', index)
-      console.log('visible', visible)
-      console.log('prevfunc', previousListing)
-      console.log('nextlisting', nextListing)
-
-
-      console.log('photos', photos);
-
+    const { index, visible, previousListing, nextListing, photos } = this.props;
     const url = photos.urls[index].url
-
-
     const style = {
       'background-image': `url(${url})`,
     };
