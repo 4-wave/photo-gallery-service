@@ -33,7 +33,7 @@ class CarouselPage extends React.Component {
         </div>
 
         <div className={styles.pageMainPositioning}>
-          <MainCarousel photos={info} id={photoId} />
+          <MainCarousel photos={info} id={photoId - 1} />
         </div>
 
         <div className={styles.previewGalleryContainer}>
