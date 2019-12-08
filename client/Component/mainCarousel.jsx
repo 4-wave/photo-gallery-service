@@ -9,10 +9,11 @@ class MainCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0,
-      currentPhoto: props.photos.urls[0].url,
+      currentPhotoIndex: 0,
       visible: true,
     };
+    this.counter = Number(this.props.id);
+    this.photos = props.photos.urls
 
     // console.log('WHY IS THE PHOTO always off? but works with 1 and not 0', props);
 
@@ -23,41 +24,42 @@ class MainCarousel extends React.Component {
 
   componentDidMount() {
     this.setState({
-      currentPhoto: this.props.photos.urls[Number(this.props.id) - 1].url,
-      counter: Number(this.props.id) - 1,
+      currentPhotoIndex: Number(this.counter) - 1, // make this reference counter
+    //   counter: Number(this.props.id) - 1,
     })
       .then(() => {
-        console.log('NEW counter is', this.state.counter)
+        console.log('Component did mount set the counter to:', this.counter);
       });
   }
 
 
   nextProperty() {
-    const { counter } = this.state;
-    const { photos } = this.props;
-    if (counter < photos.urls.length-1) {
-      this.setState((prevState) => ({
+    // const { counter } = this.state;
+    if (this.counter < this.photos.length) {
+      this.counter += 1;
+      this.setState(() => ({
         visible: false,
-        counter: prevState.counter + 1,
+        // counter: prevState.counter + 1,
       }))
         .then(() => {
-          console.log('NEW counter is', this.state.counter)
+        //   console.log('NEW counter is', this.state.counter)
           setTimeout(() => {
             this.setState({
-              currentPhoto: photos.urls[counter].url,
+              currentPhotoIndex: this.counter - 1,
               visible: true,
             });
           }, 100);
         });
     } else {
+      this.counter = 0;
       this.setState({
         visible: false,
-        counter: 0,
+        // counter: 0,
       })
         .then(() => {
           setTimeout(() => {
             this.setState({
-              currentPhoto: photos.urls[counter].url,
+              currentPhotoIndex: this.counter - 1,
               visible: true,
             });
           }, 100);
@@ -66,34 +68,28 @@ class MainCarousel extends React.Component {
   }
 
   previousProperty() {
-    // need to look into why the prev doesnt go to the prev, looks like it skipped around
-
-    const { counter } = this.state;
-    const { photos } = this.props;
-
-    if (counter > 0) {
+    if (this.counter > -1) {
+      this.counter -= 1;
       this.setState({
         visible: false,
-        counter: counter - 1,
       })
         .then(() => {
-          console.log('NEW counter is', this.state.counter)
           setTimeout(() => {
             this.setState({
-              currentPhoto: photos.urls[counter].url,
+              currentPhotoIndex: this.counter - 1,
               visible: true,
             });
           }, 100);
         });
     } else {
+      this.counter = this.photos.length - 1;
       this.setState({
         visible: false,
-        counter: photos.urls.length-1,
       })
         .then(() => {
           setTimeout(() => {
             this.setState({
-              currentPhoto: photos.urls[counter].url,
+              currentPhotoIndex: this.counter - 1,
               visible: true,
             });
           }, 100);
@@ -102,11 +98,11 @@ class MainCarousel extends React.Component {
   }
 
   render() {
-    const Next = '>';
-    const Prev = '<';
-    const { currentPhoto, visible } = this.state;
+    const { currentPhotoIndex, visible } = this.state;
+    console.log('about to read the url of this index', currentPhotoIndex);
+    const url = this.photos[currentPhotoIndex].url
     const style = {
-      'background-image': `url(${currentPhoto})`,
+      'background-image': `url(${url})`,
     };
     const fade = visible ? styles.fadeIn : styles.fadeOut;
 

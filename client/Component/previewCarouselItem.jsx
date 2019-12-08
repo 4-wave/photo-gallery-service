@@ -9,7 +9,7 @@ class PreviewCarouselItem extends React.Component {
 
     // if the prop is selected then give it a certain class versus other class
     // buttonSelected vs not Selected
-    console.log('INSIDE of caroITem', props);
+    // console.log('INSIDE of caroITem', props);
   }
 
 
