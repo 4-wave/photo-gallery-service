@@ -12,11 +12,16 @@ class PreviewCarousel extends React.Component {
 
   render() {
     const { photos, photoClick, selectedIndex } = this.props;
-    const deltaX = selectedIndex * (100 / photos.urls.length) * -1;
-    console.log(deltaX); // FORMULA NOT RIGHT
+    let deltaX;
+    if (selectedIndex > 2) { // now it does not move until it needs to
+      deltaX = (selectedIndex - 2) * 80 * -1;
+    } else {
+      deltaX = 0;
+    }
+
     const slide = {
-      'transition': 'transform 1s',
-      'transform': `translateX(${deltaX}%)`,
+      'transition': 'transform .5s',
+      'transform': `translateX(${deltaX}px)`,
     };
 
     return (
@@ -36,11 +41,11 @@ class PreviewCarousel extends React.Component {
         </div>
 
         <div className={styles.photoNumber}>
-            <b>6/12</b>
+          <b>{ `${selectedIndex + 1} /  ${photos.urls.length + 1}`}</b>
         </div>
 
         <div className={styles.photoDescription}>
-            Gurjot's House
+            {photos.name}
         </div>
 
       </div>
