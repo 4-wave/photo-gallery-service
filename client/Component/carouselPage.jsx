@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles/carousel.css';
-import Icon from './helper/SVGIcon.jsx'
+import ClosePage from './helper/SVGIcon.jsx'
 import MainCarousel from './mainCarousel.jsx';
 import PreviewCarousel from './previewCarousel.jsx';
 import { Promise } from 'bluebird';
@@ -53,7 +53,7 @@ class CarouselPage extends React.Component {
             });
           }, 100);
         });
-    } else { // cycles
+    } else { // cycles to the begingin, if user reaches end of photos
       this.setState({
         visible: false,
       })
@@ -83,7 +83,7 @@ class CarouselPage extends React.Component {
             });
           }, 100);
         });
-    } else { // cycles
+    } else { // cycles back to the end if user reaches begining of carousel
       this.setState({
         visible: false,
       })
@@ -106,8 +106,7 @@ class CarouselPage extends React.Component {
       <div className={styles.galleryPageContainer}>
 
         <div className={styles.closePage}>
-            {/* Give this some padding and margin, using styling later */}
-          <Icon
+          <ClosePage
             width={25}
             onClick={onClick}
             className={styles.x}

@@ -8,6 +8,7 @@
   grid-template-rows: 550px;
 }
 
+/* goes inside of conainter */
 .mainGallery {
   grid-column: 2/ span 2;
   grid-row: 1;
@@ -15,18 +16,12 @@
   width: 100%;
   background-size: cover;
   background-repeat:no-repeat;
-  /* border-radius: 25px; */
   z-index: 1;
   background-position: center center;
 }
 
+/* goes inside of main gallery */
 .mainPhoto {
-  /* box-sizing: border-box; */
-  /* border-style: solid; */
-  /* border-width: 5px; */
-  /* border-color: black; */
-  /* margin: 30px; */
-  /* padding: 5px; */
   min-height: 100%;
   background-position: center center;
   border-radius: 25px;
@@ -34,6 +29,7 @@
   background-repeat:no-repeat;
 }
 
+/* goes inside of mainGallery */
 .leftArrow {
     grid-column: 1 / span 2;
     grid-row: 1;
@@ -44,6 +40,7 @@
     cursor: pointer;
 }
 
+/* goes inside of mainGallery */
 .rightArrow {
     grid-column: 3 / span 2;
     grid-row: 1;
@@ -69,11 +66,9 @@
      transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
 }
 
-/* width 850px for container, 12px for each arrow + remainder, 826 for the photo */
-/* Here on is the positioning of the components...I should break it down for
-for component and then a positing css file */
+/* Here on is the positioning of the components //////////////////
 
-/* biggest container */
+/* biggest all encompassing container */
 .galleryPageContainer {
   display: grid;
   grid-template-columns: 70% 30%;
@@ -99,8 +94,6 @@ for component and then a positing css file */
   width: 100%;
   background-size: cover;
   padding-top: 45px;
-  /* display: grid;
-  grid-auto-rows: 30% 30% 40%; */
 }
 
 .closePage {
@@ -109,7 +102,6 @@ for component and then a positing css file */
   display: flex;
   flex-direction: row-reverse;
   padding: 45px;
-  /* margin: 30px; */
 }
 
 
