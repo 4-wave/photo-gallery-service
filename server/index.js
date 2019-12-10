@@ -1,9 +1,12 @@
 const express = require('express');
+const app = express();
 const path = require('path');
 const model = require('./model.js');
+const cors = require('cors');
 
-const app = express();
-const port = 3500;
+app.use(cors());
+
+const port = 3004;
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use('/:id', express.static(path.join(__dirname, '../public')));
