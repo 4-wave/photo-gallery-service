@@ -1,0 +1,107 @@
+/* main carousel */
+.mainGalleryContainer {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 550px;
+}
+
+/* goes inside of conainter */
+.mainGallery {
+  grid-column: 2/ span 2;
+  grid-row: 1;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat:no-repeat;
+  z-index: 1;
+  background-position: center center;
+}
+
+/* goes inside of main gallery */
+.mainPhoto {
+  min-height: 100%;
+  background-position: center center;
+  border-radius: 25px;
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
+/* goes inside of mainGallery */
+.leftArrow {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    outline: none;
+    border-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+}
+
+/* goes inside of mainGallery */
+.rightArrow {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    outline: none;
+    z-index: 2;
+    background-color: rgba(0,0,0,0);
+    border-color: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: pointer;
+}
+
+.x {
+  cursor: pointer;
+}
+
+.fadeOut{
+     opacity:0;
+     transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
+}
+.fadeIn{
+     opacity:1;
+     transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
+}
+
+/* Here on is the positioning of the components //////////////////
+
+/* biggest all encompassing container */
+.galleryPageContainer {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 30% 60%;
+  /* specifiy how big eaach row should be? */
+}
+
+/* component containers */
+.pageMainPositioning {
+  grid-column: 1;
+  grid-row: 1/ span 3;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  margin-top: 80px;
+  margin-left: 20px;
+}
+
+.previewGalleryContainer {
+  grid-column: 2;
+  grid-row: 2;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  padding-top: 45px;
+}
+
+.closePage {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 45px;
+}
+
+

@@ -1,0 +1,54 @@
+/* HERE ON IS THE CSS OF THE PREVIEW CAROUSEL */
+/* this container will have a flex container with three divs */
+.container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+/* div 1 - carousel */
+.carouselPosition {
+    padding: 10px;
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    width: inherit; 
+    transition: transform .5s;
+}
+
+    /* this will have a flex container inside of all the photos 
+    these photos need to be contained inside of it and not flow over to other divs*/
+.button {
+    height:70px;
+    width:70px;
+    background-size: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+    opacity: 75%;
+}
+
+.buttonSelected {
+    /* it should get color otherwise every other button is less on the opacity? */
+    height:70px;
+    width:70px;
+    background-size: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    opacity: 1;
+}
+
+
+/* div 2 - this will have the photo number out of total
+ will just need to padding for positioning */
+ .photoNumber {
+    padding: 10px;
+    order: 2;
+ }
+
+
+ /* div 3 - photo description/name of the property */
+ .photoDescription {
+     padding: 10px;
+     order:3;
+ }
