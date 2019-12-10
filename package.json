@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "build:dev": "npx webpack --config webpack.config.js --watch",
+    "build:dev": "webpack --watch -d",
+    "build": "webpack --mode=production",
     "server:dev": "nodemon ./server/index.js --watch",
-    "db:dev": "node db/seed.js"
+    "db:seed": "node db/seed.js"
   },
   "repository": {
     "type": "git",
