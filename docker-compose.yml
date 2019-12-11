@@ -1,0 +1,17 @@
+# confirm what version we need
+version: '3'
+
+# services should be to start and seed db
+# once that is connected then we should connect the server to it
+# server going to listen at 3004
+# all depends does it that it lets the img be created, but not for the db to be spun?`
+services:
+  survey:
+    server: server/
+    depends_on:
+      - 'database'
+    ports: 
+      - '3004:3004'
+
+  database:
+    image: mongo:latest

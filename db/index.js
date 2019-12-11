@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const mongoUri = 'mongodb://localhost/airbnb';
 
+//NEED TO CONNECT TO A DIFFERENT URI now....it should be database, instead of local host
+// and this needs to disconnect afterwards as well? so we can run different commands
 const database = mongoose.connect(mongoUri, { useNewUrlParser: true });
 
 mongoose.Promise = global.Promise;

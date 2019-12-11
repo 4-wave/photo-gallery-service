@@ -15,4 +15,6 @@ app.get('/airbnb/listings/:id', (req, res) => {
   model.getData(req.params.id, res);
 });
 
-app.listen(port, () => {});
+app.listen(port, () => {
+  console.log(`listening at port !!! ${port}`);
+});

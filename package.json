@@ -8,6 +8,7 @@
     "build:dev": "webpack --watch -d",
     "build": "webpack --mode=production",
     "server:dev": "nodemon ./server/index.js --watch",
+    "start": "node ./server/index.js",
     "db:seed": "node db/seed.js"
   },
   "repository": {
