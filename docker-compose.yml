@@ -6,12 +6,16 @@ version: '3'
 # server going to listen at 3004
 # all depends does it that it lets the img be created, but not for the db to be spun?`
 services:
-  survey:
-    server: server/
+  database:
+    image: mongo:latest
+    
+  mongo-seed:
+    build: .
+    command: npm run seed
+
+  server:
+    build: ./
     depends_on:
       - 'database'
     ports: 
       - '3004:3004'
-
-  database:
-    image: mongo:latest
