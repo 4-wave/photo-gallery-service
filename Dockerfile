@@ -11,3 +11,9 @@ RUN npm install
 EXPOSE 3004
 
 CMD [ "npm", "start" ]
+
+
+
+
+// TEST if my container works by itself, then try to spin up a new image for EC2 with its extension cus it looks
+// like the image is not being updated even though im changing stuff in it

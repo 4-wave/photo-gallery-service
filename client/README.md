@@ -27,6 +27,4 @@ Tasks
 #Create the relative React components
     -Create the photo Gallery
     -Create the Share and Save button
-    -Create the View Photos button
-    -Looks like some of the photos actually have a description or 'verified by airbnb lines'
-    -OR others just use the title of the property and put that instead
+I AM CREATING THE EC2 BRANCH OFF OF THE DOCKER BRANCH --- reminder in case i try to merge things

@@ -10,6 +10,7 @@ const port = 3004;
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use('/:id', express.static(path.join(__dirname, '../public')));
+app.use('/bundle.js', express.static(path.join(__dirname, '../public/bundle.js')));
 
 app.get('/airbnb/listings/:id', (req, res) => {
   model.getData(req.params.id, res);
