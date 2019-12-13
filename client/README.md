@@ -27,4 +27,4 @@ Tasks
 #Create the relative React components
     -Create the photo Gallery
     -Create the Share and Save button
-I AM CREATING THE EC2 BRANCH OFF OF THE DOCKER BRANCH --- reminder in case i try to merge things
+I AM CREATING THE EC2 BRANCH OFF OF THE DOCKER BRANCH --- reminder in case i try to merge thing
