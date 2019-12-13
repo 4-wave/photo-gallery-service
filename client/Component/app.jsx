@@ -27,7 +27,7 @@ class App extends React.Component {
     } else {
       endpoint = window.location.pathname.split('/')[1];
     }
-    axios.get(`/airbnb/listings/${endpoint}`)
+    axios.get(`http://52.8.7.55/airbnb/listings/${endpoint}`)
       .then((data) => {
         this.setState({
           photos: data.data,
