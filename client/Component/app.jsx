@@ -53,7 +53,15 @@ class App extends React.Component {
   }
 
   render() {
+    // Stops scrolling of the page if Modal opens up
     const { show, photos } = this.state;
+    const objRef = document.body;
+    if (!show.gallery) {
+      objRef.style['overflow-y'] = 'hidden';
+    } else {
+      objRef.style['overflow-y'] = 'auto';
+    }
+
     if (show.gallery) {
       return (
         <div>
