@@ -2,7 +2,17 @@ const mongoose = require('mongoose');
 
 const mongoUri = 'mongodb://localhost/airbnb';
 
-const database = mongoose.connect(mongoUri, { useNewUrlParser: true });
+const connectWithRetry = () => {
+  console.log('MongoDB connection with retry');
+  mongoose.connect(mongoUri, { useNewUrlParser: true }).then(() => {
+    console.log('MongoDB is connected');
+  }).catch((err) => {
+    console.log('unsuccessful, retry after 5 seconds.', err);
+    setTimeout(connectWithRetry, 5000);
+  });
+};
+
+connectWithRetry();
 
 mongoose.Promise = global.Promise;
 
@@ -18,4 +28,3 @@ const listingSchema = new mongoose.Schema({
 const Listing = mongoose.model('Listing', listingSchema);
 
 module.exports.Listing = Listing;
-module.exports.database = database;

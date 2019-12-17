@@ -1,4 +1,5 @@
 const db = require('../db/index.js');
+const mongoose = require('mongoose');
 
 const photoOptions = {
   1: { type: 'bedroom', quantity: 20 },
@@ -55,13 +56,15 @@ function seedData(NumberOfSeeds) {
       urls: urlArr,
     });
 
-    document.save(() => {});
+    document.save(() => {
+      mongoose.connection.close();
+    });
   }
 }
 
 // Clean collection Before Seeding
 db.Listing.remove({}, () => {
-  console.log('collection was cleared!');
+  console.log('collection was cleared! Will seed now');
 });
 
 seedData(100);

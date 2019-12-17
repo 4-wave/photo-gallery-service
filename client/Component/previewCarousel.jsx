@@ -36,7 +36,7 @@ function PreviewCarousel (props) {
         <b>{ `${selectedIndex + 1} /  ${photos.urls.length}`}</b>
       </div>
 
-      <div className={styles.photoDescription}>
+      <div className={`${styles.photoDescription}`}>
         {photos.name}
       </div>
 

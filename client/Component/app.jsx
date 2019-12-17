@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Gallery from './gallery.jsx';
 import CarouselPage from './carouselPage.jsx';
+import styles from './styles/app.css';
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +17,6 @@ class App extends React.Component {
         photo: 0,
       },
     };
-
     this.changePage = this.changePage.bind(this);
   }
 
@@ -53,7 +53,15 @@ class App extends React.Component {
   }
 
   render() {
+    // Stops scrolling of the page if Modal opens up
     const { show, photos } = this.state;
+    const objRef = document.body;
+    if (!show.gallery) {
+      objRef.style['overflow-y'] = 'hidden';
+    } else {
+      objRef.style['overflow-y'] = 'auto';
+    }
+
     if (show.gallery) {
       return (
         <div>
@@ -62,7 +70,7 @@ class App extends React.Component {
       );
     }
     return (
-      <div>
+      <div className={styles.CarouselPage}>
         <CarouselPage onClick={this.changePage} info={photos} showPhoto={show} />
       </div>
     );
