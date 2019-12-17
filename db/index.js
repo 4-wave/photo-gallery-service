@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUri = 'mongodb://database/airbnb';
-
-// mongoose.connect(mongoUri, { useNewUrlParser: true })
+const mongoUri = 'mongodb://localhost/airbnb';
 
 const connectWithRetry = () => {
   console.log('MongoDB connection with retry');
