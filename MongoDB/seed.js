@@ -1,4 +1,4 @@
-const db = require("../db/index.js");
+const db = require("./index.js.js");
 const mongoose = require("mongoose");
 
 const photoOptions = {
