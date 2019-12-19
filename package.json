@@ -9,7 +9,7 @@
     "build": "webpack --mode=production",
     "server:dev": "nodemon ./server/index.js --watch",
     "start": "node ./server/index.js",
-    "seed": "node db/seed.js"
+    "seed": "node MongoDB/seed.js"
   },
   "repository": {
     "type": "git",

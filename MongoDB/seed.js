@@ -1,4 +1,4 @@
-const db = require("./index.js.js");
+const db = require("./index.js");
 const mongoose = require("mongoose");
 
 const photoOptions = {
@@ -100,4 +100,4 @@ db.Listing.remove({}, () => {
   console.log("collection was cleared! Will seed now");
 });
 
-seedData(10000);
+seedData(1000000);
