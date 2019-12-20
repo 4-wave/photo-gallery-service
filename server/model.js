@@ -1,4 +1,4 @@
-const db = require('../db/index');
+const db = require('../MongoDB/index');
 
 module.exports.getData = function getAllDataFromDb(id, res) {
   db.Listing.find({})
