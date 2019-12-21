@@ -13,7 +13,7 @@ function createDatabases(cb) {
   async.each(databases, createDatabase, cb);
 }
 
-function createDatabase(db, cb) {
+function (db, cb) {
   couch.db.create(db, function(err) {
     if (err && err.statusCode == 412) {
       err = null;

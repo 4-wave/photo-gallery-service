@@ -9,6 +9,8 @@
     "build": "webpack --mode=production",
     "server:dev": "nodemon ./server/index.js --watch",
     "start": "node ./server/index.js",
+    "schema:postgres": "psql < ./db/PostGres/schema.sql",
+    "seed:postgres": "node db/PostGres/seed.js",
     "seed": "node MongoDB/seed.js"
   },
   "repository": {
@@ -49,9 +51,12 @@
     "axios": "^0.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "mongo": "^0.1.0",
     "mongoose": "^5.7.13",
     "nano": "^8.1.0",
+    "os": "^0.1.1",
+    "path": "^0.12.7",
     "pg": "^7.15.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
