@@ -82,20 +82,39 @@ function seedData(NumberOfSeeds) {
     const type =
       nameKeyWords.type[Math.floor(Math.random() * nameKeyWords.type.length)];
     const houseName = `${location} ${description} ${type}`;
+    
+    // partitioning the seeding into 3 parts
+    const partitionOneCount = NumberOfSeeds/3 * 1
+    const partitionTwoCount = NumberOfSeeds/3 * 2
+    const partitionThreeCount = NumberOfSeeds/3 * 3
 
-    // generate random images
-    const photoOptionIdx = Math.floor(Math.random() * 9);
-    const number = photoOptions[photoOptionIdx].quantity;
-    const currentUrl = `https://airbnbphotogallery.s3-us-west-1.amazonaws.com/${photoOptions[photoOptionIdx].type}${number}.jpg`;
-    const timestamp = new Date();
 
-    photoJSONObj.push({ caption, currentUrl, timestamp });
+    const randomNumber = Math.floor(Math.random() * 15);
+    for (let j = 0; j < randomNumber; j++) {
+      const timestamp = new Date();
+      const listingId = i;
+      const photoOptionIdx = Math.floor(Math.random() * 10);
+      const number = photoOptions[photoOptionIdx].quantity;
+      let currentUrl = `https://airbnbphotogallery.s3-us-west-1.amazonaws.com/${photoOptions[photoOptionIdx].type}${number}.jpg`;
+      if (i < partitionOneCount){
+        photoJSONObjOne.push({ caption, currentUrl, timestamp, listingId });
+      }
+      if (partitionOneCount < i && i < partitionTwoCount) {
+        photoJSONObjTwo.push({ caption, currentUrl, timestamp, listingId });
+      }
+      if (partitionTwoCount < i && i < partitionThreeCount) {
+        photoJSONObjTwo.push({ caption, currentUrl, timestamp, listingId });
+      }
+    }
   }
 }
 
-const photoJSONObj = [];
+const photoJSONObjOne = [];
+const photoJSONObjTwo = [];
+const photoJSONObjThree = [];
 
-const seedCount = 100000;
+
+const seedCount = 200000;
 // generate X rows of data
 seedData(seedCount);
 
@@ -104,19 +123,40 @@ seedData(seedCount);
 const nano = require("nano")("http://localhost:5984");
 
 const startTime = Date.now();
-nano.db
-  .destroy("airbnbphotos")
-  .then(response => {
-    return nano.db.create("airbnbphotos");
-  })
-  .then(response => {
-    airbnbphotos = nano.use("airbnbphotos");
-    return airbnbphotos.bulk({ docs: photoJSONObj }).then(response => {
-      airbnbphotos.bulk({ docs: photoJSONObj });
+// nano.db
+//   .destroy("airbnbphotos")
+//   .then(response => {
+//     return nano.db.create("airbnbphotos");
+//   })
+//   .then(response => {
+//     airbnbphotos = nano.use("airbnbphotos");
+//     return airbnbphotos.bulk({ docs: photoJSONObjOne })
+// }).then(response => {
+//   airbnbphotos.bulk({ docs: photoJSONObjTwo })
+// }).then(response => {
+//     console.log(
+//       `Inserted ${seedCount} documents at ${new Date() - startTime}ms`
+//     );
+//   }).catch((error)  => {
+//     console.error(error);
+//   });
+const airbnbphotos = nano.use("airbnbphotos");
+airbnbphotos.bulk({ docs: photoJSONObjOne}).then(response => {
+      console.log(
+        `Inserted ${seedCount} documents at ${new Date() - startTime}ms`
+      );
+    }).catch((error)  => {
+      console.error(error);
     });
-  })
-  .then(response => {
-    console.log(
-      `Inserted ${seedCount * 2} documents at ${new Date() - startTime}ms`
-    );
-  });
+
+// nano.db.use("airbnbphotos").then(response => {
+//   airbnbphotos.bulk({ docs: photoJSONObjOne})
+// }).then(response => {
+//   airbnbphotos.bulk({ docs: photoJSONObjTwo })
+// }).then(response => {
+//     console.log(
+//       `Inserted ${seedCount} documents at ${new Date() - startTime}ms`
+//     );
+//   }).catch((error)  => {
+//     console.error(error);
+//   });

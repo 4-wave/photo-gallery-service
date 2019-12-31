@@ -17,6 +17,7 @@ app.use(
 
 app.get('/airbnb/listings/:id', (req, res) => {
   model.getData(req.params.id, res);
+  
 });
 
 // POST method route for adding photo url to db

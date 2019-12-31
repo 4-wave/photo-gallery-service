@@ -26,4 +26,4 @@ CREATE TABLE photos
 );
 
 
-
+CREATE INDEX photos_listing_id ON photos(listing_id)

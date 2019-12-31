@@ -8,9 +8,9 @@ const pool = new Pool({
 
 module.exports = {
   PhotoCollection: {
-    get: (restaurantID, callback) => {
+    get: (listingID, callback) => {
       connection.query(
-        `SELECT * FROM popularDishes WHERE restaurant_id = ${restaurantID}`,
+        `SELECT * FROM photos WHERE listing_id = ${listingID}`,
         function(error, result) {
           if (error) {
             callback(error);
@@ -20,12 +20,12 @@ module.exports = {
       );
     },
     seed: async callback => {
-      const millionRows = 1;
+      const millionRows = 2;
       const startTime = new Date();
       const promises = [];
 
       for (var i = 0; i < millionRows; i++) {
-        var query = `COPY photos ( photo_caption,photo_url,photo_upload_date, listing_id)  FROM '/Users/lillytang/Documents/airbnb-photogallery/db/PostGres/photoTable.csv' DELIMITER ',';`;
+        var query = `COPY photos ( photo_caption,photo_url,photo_upload_date, listing_id)  FROM '/Users/lillytang/Desktop/photo-gallery-service/db/PostGres/photoTable.csv' DELIMITER ',';`;
         promises.push(pool.query(query));
       }
 
@@ -33,16 +33,16 @@ module.exports = {
         .then(() =>
           console.log(
             `The query took ${new Date() -
-              startTime}ms to write ${millionRows} million rows to 'Photos' table`
+              startTime}ms to write ${10 * millionRows} million rows to 'Photos' table`
           )
         )
         .catch(err => console.error("Error executing promise.all", err.stack));
     }
   },
   HostCollection: {
-    get: (restaurantID, callback) => {
+    get: (listingID, callback) => {
       connection.query(
-        `SELECT * FROM popularDishes WHERE restaurant_id = ${restaurantID}`,
+        `SELECT * FROM photos WHERE listing_id = ${listingID}`,
         function(error, result) {
           if (error) {
             callback(error);
@@ -52,12 +52,12 @@ module.exports = {
       );
     },
     seed: async callback => {
-      const millionRows = 1;
+      const millionRows = 10;
       const startTime = new Date();
       const promises = [];
 
       for (var i = 0; i < millionRows; i++) {
-        var query = `COPY host (host_name)  FROM '/Users/lillytang/Documents/airbnb-photogallery/db/PostGres/hostTable.csv' DELIMITER ',';`;
+        var query = `COPY host (host_name)  FROM '/Users/lillytang/Desktop/photo-gallery-service/db/PostGres/hostTable.csv' DELIMITER ',';`;
         promises.push(pool.query(query));
       }
 
@@ -72,9 +72,9 @@ module.exports = {
     }
   },
   ListingCollection: {
-    get: (restaurantID, callback) => {
+    get: (listingID, callback) => {
       connection.query(
-        `SELECT * FROM popularDishes WHERE restaurant_id = ${restaurantID}`,
+        `SELECT * FROM photos WHERE listing_id = ${listingID}`,
         function(error, result) {
           if (error) {
             callback(error);
@@ -84,12 +84,12 @@ module.exports = {
       );
     },
     seed: async callback => {
-      const millionRows = 1;
+      const millionRows = 10;
       const startTime = new Date();
       const promises = [];
 
       for (var i = 0; i < millionRows; i++) {
-        var query = `COPY listing (region)  FROM '/Users/lillytang/Documents/airbnb-photogallery/db/PostGres/listingTable.csv' DELIMITER ',';`;
+        var query = `COPY listing (region)  FROM '/Users/lillytang/Desktop/photo-gallery-service/db/PostGres/listingTable.csv' DELIMITER ',';`;
         promises.push(pool.query(query));
       }
 

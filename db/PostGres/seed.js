@@ -32,7 +32,9 @@ const nameKeyWords = {
     "World Famous",
     "Manhattn",
     "Brownstone",
-    "Bay Area"
+    "Bay Area", 
+    "Atlanta", 
+    "Dallas"
   ],
   description: [
     "Desert",
@@ -104,11 +106,11 @@ function seedData(NumberOfSeeds) {
 
     // generate random number of images per listing
 
-    const randomNumber = Math.floor(Math.random() * 10);
+    const randomNumber = Math.floor(Math.random() * 15);
     for (let j = 0; j < randomNumber; j++) {
       const timestamp = new Date();
       const listingId = i;
-      const photoOptionIdx = Math.floor(Math.random() * 9);
+      const photoOptionIdx = Math.floor(Math.random() * 10);
       const number = photoOptions[photoOptionIdx].quantity;
       let currentUrl = `https://airbnbphotogallery.s3-us-west-1.amazonaws.com/${photoOptions[photoOptionIdx].type}${number}.jpg`;
       photoJSONObj.push({ caption, currentUrl, timestamp, listingId });
@@ -123,10 +125,10 @@ const photoJSONObj = [];
 const hostJSONObj = [];
 const listingJSONObj = [];
 
-// generate X rows of data
-seedData(250000);
+// generate X rows of listing
+seedData(800000);
 
-// write data to CSV ============================================================================================================
+// // write data to CSV ============================================================================================================
 
 // write file in the same folder
 const photoFilePath = path.join(__dirname, "photoTable.csv"); //csv for the Photos table
@@ -165,11 +167,9 @@ fs.writeFileSync(hostFilePath, hostOutput.join(os.EOL)); // write to HostTable.c
 fs.writeFileSync(photoFilePath, photoOutput.join(os.EOL)); // write to PhotoTable.csv
 fs.writeFileSync(listingFilePath, listingOutput.join(os.EOL)); // write to PhotoTable.csv
 
-console.log(
-  `${new Date() - startTime}ms to write ${NumberOfSeeds} rows to CSV`
-);
+console.log(`${new Date() - startTime}ms to write 10M+ rows to CSV`);
 
-// seeding ==================================================================================================
+// // seeding ==================================================================================================
 
 Model.HostCollection.seed((err, data) => {
   if (err) {

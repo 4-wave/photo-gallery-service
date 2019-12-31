@@ -2,7 +2,12 @@ ULTIMATE GOAL:
 
 1. Generate 10M records and load the data in less than 1 hour
 
-- wrote seeding scripts for POSTgres and
+- wrote seeding scripts for POSTgres and CouchDB
+- learn promises to seed all tables at once; should I promisify my seeding functions?
+- generate unique records for Postgres
+- indexing my database
+- write better queries
+- include execution stats in my couchdb VIEWS 
 
 2. Performance tuning and optimize my DBMS
 
@@ -29,3 +34,8 @@ POSTGRES
 
 - When I was trying to copy data into db, I ran into this error.
 - I fixed it by removing comma from the photo_caption because it was mistaking it for new rows of data
+
+5. FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+
+- too much memory used when creating 100 millions rows of my JSON objects
+- solved it by allocating 6gb memory to node --max_old_space_size=6000 db/PostGres/seed.js

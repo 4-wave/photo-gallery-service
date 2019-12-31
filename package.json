@@ -10,8 +10,9 @@
     "server:dev": "nodemon ./server/index.js --watch",
     "start": "node ./server/index.js",
     "schema:postgres": "psql < ./db/PostGres/schema.sql",
-    "seed:postgres": "node db/PostGres/seed.js",
-    "seed": "node MongoDB/seed.js"
+    "seed:postgres": "node --max_old_space_size=6000 db/PostGres/seed.js",
+    "seed:couchdb" : "node --max_old_space_size=6000 db/CouchDB/seed.js",
+    "seed:mongo": "node MongoDB/seed.js"
   },
   "repository": {
     "type": "git",
