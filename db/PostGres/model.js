@@ -9,15 +9,12 @@ const pool = new Pool({
 module.exports = {
   PhotoCollection: {
     get: (listingID, callback) => {
-      connection.query(
-        `SELECT * FROM photos WHERE listing_id = ${listingID}`,
-        function(error, result) {
-          if (error) {
-            callback(error);
-          }
-          callback(null, result);
+      pool.query(`SELECT * FROM photos LIMIT 2`, function(error, result) {
+        if (error) {
+          callback(error);
         }
-      );
+        callback(null, result);
+      });
     },
     seed: async callback => {
       const millionRows = 2;
@@ -32,8 +29,8 @@ module.exports = {
       Promise.all(promises)
         .then(() =>
           console.log(
-            `The query took ${new Date() -
-              startTime}ms to write ${10 * millionRows} million rows to 'Photos' table`
+            `The query took ${new Date() - startTime}ms to write ${10 *
+              millionRows} million rows to 'Photos' table`
           )
         )
         .catch(err => console.error("Error executing promise.all", err.stack));
@@ -41,7 +38,7 @@ module.exports = {
   },
   HostCollection: {
     get: (listingID, callback) => {
-      connection.query(
+      pool.query(
         `SELECT * FROM photos WHERE listing_id = ${listingID}`,
         function(error, result) {
           if (error) {
