@@ -1,0 +1,16 @@
+config:
+  target: "http://localhost:3004/airbnb/listings/12"
+  phases:
+    - duration: 60
+      arrivalRate: 100
+      rampTo: 400
+      name: "Warm up the application"
+    - duration: 120
+      arrivalRate: 400
+      name: "Sustained max load"
+scenarios:
+  - flow:
+      - loop:
+          - get:
+              url: "http://localhost:3004/airbnb/listings/12"
+        count: 1000

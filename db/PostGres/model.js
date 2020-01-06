@@ -9,12 +9,15 @@ const pool = new Pool({
 module.exports = {
   PhotoCollection: {
     get: (listingID, callback) => {
-      pool.query(`SELECT * FROM photos LIMIT 2`, function(error, result) {
-        if (error) {
-          callback(error);
+      pool.query(
+        `SELECT * FROM photos WHERE listing_id = ${listingID}`,
+        function(error, result) {
+          if (error) {
+            callback(error);
+          }
+          callback(null, result);
         }
-        callback(null, result);
-      });
+      );
     },
     seed: async callback => {
       const millionRows = 2;

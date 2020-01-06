@@ -15,7 +15,7 @@ module.exports = {
         if (err) {
           console.log(err);
         } else {
-          res.send(data.rows[0]);
+          res.send(data.rows);
           // console.log(data.rows[0]);
         }
       });

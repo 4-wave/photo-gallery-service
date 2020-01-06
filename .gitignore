@@ -12,3 +12,8 @@ package-lock.json
 coverage
 
 *.csv
+
+newrelic.js
+
+newrelic_agent.log
+
