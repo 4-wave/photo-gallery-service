@@ -1,44 +1,53 @@
-import React from 'react';
-import axios from 'axios';
-import Gallery from './gallery.jsx';
-import CarouselPage from './carouselPage.jsx';
-import styles from './styles/app.css';
+import React from "react";
+import axios from "axios";
+import Gallery from "./gallery.jsx";
+import CarouselPage from "./carouselPage.jsx";
+import styles from "./styles/app.css";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       photos: {
-        name: 'placeholder',
-        urls: [],
+        name: "placeholder",
+        urls: []
       },
       show: {
         gallery: true,
-        photo: 0,
-      },
+        photo: 0
+      }
     };
     this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
     let endpoint;
-    if (window.location.pathname === '/') {
+    if (window.location.pathname === "/") {
       endpoint = 1;
     } else {
-      endpoint = window.location.pathname.split('/')[1];
+      endpoint = window.location.pathname.split("/")[1];
     }
-    axios.get(`http://localhost:3004/airbnb/listings/${endpoint}`)
-      .then((data) => {
+    axios
+      .get(`http://localhost:3004/airbnb/listings/${endpoint}`)
+      .then(data => {
+        let urls = [];
+        console.log(data);
+        data.data.map(photo => {
+          urls.push(photo.photo_url);
+        });
         this.setState({
-          photos: data.data,
+          photos: {
+            name: "placeholder",
+            urls: urls
+          }
         });
       });
   }
 
   changePage(e) {
     let photoNumber; // lets me use the same click function on different DOM element types
-    if (e.target.nodeName === 'DIV') {
-      photoNumber = Number(e.target.className.split(' ')[0]);
+    if (e.target.nodeName === "DIV") {
+      photoNumber = Number(e.target.className.split(" ")[0]);
     } else {
       photoNumber = 0;
     }
@@ -47,8 +56,8 @@ class App extends React.Component {
     this.setState({
       show: {
         gallery: !show.gallery,
-        photo: photoNumber,
-      },
+        photo: photoNumber
+      }
     });
   }
 
@@ -57,9 +66,9 @@ class App extends React.Component {
     const { show, photos } = this.state;
     const objRef = document.body;
     if (!show.gallery) {
-      objRef.style['overflow-y'] = 'hidden';
+      objRef.style["overflow-y"] = "hidden";
     } else {
-      objRef.style['overflow-y'] = 'auto';
+      objRef.style["overflow-y"] = "auto";
     }
 
     if (show.gallery) {
@@ -71,7 +80,11 @@ class App extends React.Component {
     }
     return (
       <div className={styles.CarouselPage}>
-        <CarouselPage onClick={this.changePage} info={photos} showPhoto={show} />
+        <CarouselPage
+          onClick={this.changePage}
+          info={photos}
+          showPhoto={show}
+        />
       </div>
     );
   }

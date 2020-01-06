@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './styles/gallery.css';
-import GalleryPhoto from './galleryPhoto.jsx';
+import React from "react";
+import styles from "./styles/gallery.css";
+import GalleryPhoto from "./galleryPhoto.jsx";
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -10,14 +10,14 @@ class Gallery extends React.Component {
       img2Css: styles.divInner,
       img3Css: styles.divInner,
       img4Css: styles.divInner,
-      img5Css: styles.divInner,
+      img5Css: styles.divInner
     };
     this.darkenOtherPhotos = this.darkenOtherPhotos.bind(this);
     this.undarkenOtherPhotos = this.undarkenOtherPhotos.bind(this);
   }
 
   darkenOtherPhotos(e) {
-    const targ = e.target.className.split(' ')[0];
+    const targ = e.target.className.split(" ")[0];
 
     const arr = [];
     for (let i = 1; i < 6; i += 1) {
@@ -31,12 +31,12 @@ class Gallery extends React.Component {
       [arr[0]]: styles.divInnerDarken,
       [arr[1]]: styles.divInnerDarken,
       [arr[2]]: styles.divInnerDarken,
-      [arr[3]]: styles.divInnerDarken,
+      [arr[3]]: styles.divInnerDarken
     });
   }
 
   undarkenOtherPhotos(e) {
-    const targ = e.target.className.split(' ')[0];
+    const targ = e.target.className.split(" ")[0];
     const arr = [];
     for (let i = 1; i < 6; i += 1) {
       if (Number(targ) !== i) {
@@ -48,7 +48,7 @@ class Gallery extends React.Component {
       [arr[0]]: styles.divInner,
       [arr[1]]: styles.divInner,
       [arr[2]]: styles.divInner,
-      [arr[3]]: styles.divInner,
+      [arr[3]]: styles.divInner
     });
   }
 
@@ -71,11 +71,12 @@ class Gallery extends React.Component {
         {galleryPhotoArr.map((item, id) => {
           return (
             <GalleryPhoto
+              key={id}
               photo={item}
               identity={id + 1}
               darken={this.darkenOtherPhotos}
               undarken={this.undarkenOtherPhotos}
-              positioning={this.state[`img${id+1}Css`]}
+              positioning={this.state[`img${id + 1}Css`]}
             />
           );
         })}
