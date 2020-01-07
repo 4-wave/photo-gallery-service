@@ -31,10 +31,10 @@ class App extends React.Component {
       .get(`http://localhost:3004/airbnb/listings/${endpoint}`)
       .then(data => {
         let urls = [];
-        console.log(data);
         data.data.map(photo => {
-          urls.push(photo.photo_url);
-        });
+          let photo_url = photo.photo_url.replace(/['"]+/g, "");
+          urls.push(photo_url);
+        }); 
         this.setState({
           photos: {
             name: "placeholder",

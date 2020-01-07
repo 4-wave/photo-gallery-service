@@ -3,8 +3,9 @@ import styles from "./styles/previewCarousel.css";
 
 function PreviewCarouselItem(props) {
   const { photo, onClick, id, selectedIndex } = props;
+  console.log(photo);
   const background = {
-    backgroundImage: `url(${photo.url})`
+    backgroundImage: `url(${photo})`
   };
   const selected = selectedIndex === id ? styles.buttonSelected : styles.button;
 
