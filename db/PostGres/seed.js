@@ -32,8 +32,8 @@ const nameKeyWords = {
     "World Famous",
     "Manhattn",
     "Brownstone",
-    "Bay Area", 
-    "Atlanta", 
+    "Bay Area",
+    "Atlanta",
     "Dallas"
   ],
   description: [
@@ -111,7 +111,9 @@ function seedData(NumberOfSeeds) {
       const timestamp = new Date();
       const listingId = i;
       const photoOptionIdx = Math.floor(Math.random() * 10);
-      const number = photoOptions[photoOptionIdx].quantity;
+      const number = Math.floor(
+        Math.random() * photoOptions[photoOptionIdx].quantity
+      );
       let currentUrl = `https://airbnbphotogallery.s3-us-west-1.amazonaws.com/${photoOptions[photoOptionIdx].type}${number}.jpg`;
       photoJSONObj.push({ caption, currentUrl, timestamp, listingId });
     }
@@ -126,7 +128,7 @@ const hostJSONObj = [];
 const listingJSONObj = [];
 
 // generate X rows of listing
-seedData(800000);
+seedData(2000000);
 
 // // write data to CSV ============================================================================================================
 

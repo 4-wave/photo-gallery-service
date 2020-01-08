@@ -1,10 +1,18 @@
 const { Pool, Client } = require("pg");
 const pool = new Pool({
-  user: "lillytang",
-  host: "localhost",
+  user: "postgres",
+  host: "ec2-54-215-251-51.us-west-1.compute.amazonaws.com",
   database: "photos",
   port: 5432
 });
+
+//localhost connection
+// const pool = new Pool({
+//   user: "lillytang",
+//   host: "localhost",
+//   database: "photos",
+//   port: 5432
+// });
 
 module.exports = {
   PhotoCollection: {
@@ -20,7 +28,7 @@ module.exports = {
       );
     },
     seed: async callback => {
-      const millionRows = 2;
+      const millionRows = 1;
       const startTime = new Date();
       const promises = [];
 
@@ -32,8 +40,8 @@ module.exports = {
       Promise.all(promises)
         .then(() =>
           console.log(
-            `The query took ${new Date() - startTime}ms to write ${10 *
-              millionRows} million rows to 'Photos' table`
+            `The query took ${new Date() -
+              startTime}ms to write 5 million rows to 'Photos' table`
           )
         )
         .catch(err => console.error("Error executing promise.all", err.stack));
@@ -52,7 +60,7 @@ module.exports = {
       );
     },
     seed: async callback => {
-      const millionRows = 10;
+      const millionRows = 1;
       const startTime = new Date();
       const promises = [];
 
@@ -84,7 +92,7 @@ module.exports = {
       );
     },
     seed: async callback => {
-      const millionRows = 10;
+      const millionRows = 1;
       const startTime = new Date();
       const promises = [];
 
