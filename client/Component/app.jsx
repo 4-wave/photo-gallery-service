@@ -28,13 +28,13 @@ class App extends React.Component {
       endpoint = window.location.pathname.split("/")[1];
     }
     axios
-      .get(`http://localhost:3004/airbnb/listings/${endpoint}`)
+      .get(`http://localhost:3008/airbnb/listings/${endpoint}`)
       .then(data => {
         let urls = [];
         data.data.map(photo => {
           let photo_url = photo.photo_url.replace(/['"]+/g, "");
           urls.push(photo_url);
-        }); 
+        });
         this.setState({
           photos: {
             name: "placeholder",

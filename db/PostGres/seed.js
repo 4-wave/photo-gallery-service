@@ -128,7 +128,7 @@ const hostJSONObj = [];
 const listingJSONObj = [];
 
 // generate X rows of listing
-seedData(2000000);
+seedData(10000);
 
 // // write data to CSV ============================================================================================================
 
