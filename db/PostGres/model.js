@@ -3,7 +3,7 @@ const { Pool, Client } = require("pg");
 // connected to remote postgres on aws
 const pool = new Pool({
   user: "postgres",
-  host: "ec2-54-193-64-209.us-west-1.compute.amazonaws.com",
+  host: "ec2-13-52-67-66.us-west-1.compute.amazonaws.com",
   database: "photos",
   port: 5432
 });

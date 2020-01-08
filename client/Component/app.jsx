@@ -27,21 +27,19 @@ class App extends React.Component {
     } else {
       endpoint = window.location.pathname.split("/")[1];
     }
-    axios
-      .get(`http://localhost:3008/airbnb/listings/${endpoint}`)
-      .then(data => {
-        let urls = [];
-        data.data.map(photo => {
-          let photo_url = photo.photo_url.replace(/['"]+/g, "");
-          urls.push(photo_url);
-        });
-        this.setState({
-          photos: {
-            name: "placeholder",
-            urls: urls
-          }
-        });
+    axios.get(`http://54.177.59.24/airbnb/listings/${endpoint}`).then(data => {
+      let urls = [];
+      data.data.map(photo => {
+        let photo_url = photo.photo_url.replace(/['"]+/g, "");
+        urls.push(photo_url);
       });
+      this.setState({
+        photos: {
+          name: "placeholder",
+          urls: urls
+        }
+      });
+    });
   }
 
   changePage(e) {
