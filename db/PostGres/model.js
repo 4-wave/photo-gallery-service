@@ -1,18 +1,18 @@
 const { Pool, Client } = require("pg");
-const pool = new Pool({
-  user: "postgres",
-  host: "ec2-54-215-251-51.us-west-1.compute.amazonaws.com",
-  database: "photos",
-  port: 5432
-});
-
-//localhost connection
 // const pool = new Pool({
-//   user: "lillytang",
-//   host: "localhost",
+//   user: "postgres",
+//   host: "ec2-54-215-251-51.us-west-1.compute.amazonaws.com",
 //   database: "photos",
 //   port: 5432
 // });
+
+// localhost connection
+const pool = new Pool({
+  user: "lillytang",
+  host: "localhost",
+  database: "photos",
+  port: 5432
+});
 
 module.exports = {
   PhotoCollection: {
