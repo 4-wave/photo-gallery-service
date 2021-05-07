@@ -44,7 +44,7 @@
     "nodemon": "^2.0.1",
     "react-addons-test-utils": "^15.6.2",
     "style-loader": "^1.0.1",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
